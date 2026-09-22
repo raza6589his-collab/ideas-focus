@@ -245,6 +245,92 @@ body {
     background-color: var(--bg-subtle);
 }
 
+/* سلکتور مینیمال زبان در هدر */
+.lang-selector-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid var(--border-hairline);
+    border-radius: var(--radius-sm);
+    padding: 0 8px;
+    height: 32px;
+    transition: border-color var(--transition-snappy), background-color var(--transition-snappy);
+}
+
+.lang-selector-wrapper:hover {
+    border-color: var(--border-strong);
+    background-color: var(--bg-subtle);
+}
+
+.lang-globe-icon {
+    color: var(--text-secondary);
+    margin-inline-end: 6px;
+    pointer-events: none;
+    flex-shrink: 0;
+}
+
+.lang-select {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 11.5px;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    padding-inline-end: 14px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23888888' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: left 0 center;
+}
+
+html[dir="rtl"] .lang-select {
+    background-position: left 0 center;
+}
+
+html[dir="ltr"] .lang-select {
+    background-position: right 0 center;
+}
+
+.lang-select option {
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+}
+
+/* تطبیق‌پذیری LTR */
+html[dir="ltr"] body,
+body[dir="ltr"] {
+    direction: ltr;
+    text-align: left;
+}
+
+html[dir="ltr"] .search-prefix {
+    left: 10px;
+    right: auto;
+}
+
+html[dir="ltr"] .search-field {
+    padding: 7px 28px 7px 32px;
+}
+
+html[dir="ltr"] .btn-clear {
+    right: 8px;
+    left: auto;
+}
+
+html[dir="ltr"] .priority-label {
+    margin-right: 4px;
+    margin-left: 0;
+}
+
+html[dir="ltr"] #focusExitBtn svg {
+    transform: scaleX(-1);
+}
+
 /* ================= ۲. تب‌های ناوبری سرمقاله‌ای ================= */
 .nav-section {
     background-color: var(--bg-app);

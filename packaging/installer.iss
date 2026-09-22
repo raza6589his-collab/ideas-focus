@@ -5,7 +5,7 @@
 
 #define MyAppName "ایده‌ها و تمرکز"
 #define MyAppEnglishName "Ideas & Focus"
-#define MyAppVersion "1.0.0"
+#define MyAppVersion "1.1.0"
 #define MyAppPublisher "Ideas Management Team"
 #define MyAppURL "https://github.com/raza6589his-collab/ideas-focus"
 #define MyAppExeName "IdeasFocus.exe"

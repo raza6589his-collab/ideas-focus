@@ -221,7 +221,7 @@ class OfflineStorageEngine {
                 if (res.ok) {
                     const data = await res.json();
                     const tag = (data.tag_name || '').replace(/^v/, '');
-                    const current = '1.0.0';
+                    const current = '1.1.0';
                     const isNewer = tag > current;
                     return {
                         success: true,
@@ -234,7 +234,7 @@ class OfflineStorageEngine {
                     };
                 }
             } catch {}
-            return { success: true, data: { update_available: false, current_version: '1.0.0' } };
+            return { success: true, data: { update_available: false, current_version: '1.1.0' } };
         }
 
         return { success: false, message: 'مسیر نامعتبر است' };

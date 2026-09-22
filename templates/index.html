@@ -73,6 +73,11 @@
             <polyline points="9 10 4 15 9 20"></polyline>
             <path d="M20 4v7a4 4 0 0 1-4 4H4"></path>
         </symbol>
+        <symbol id="icon-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </symbol>
     </svg>
 
     <!-- سربرگ مینیمال و آرام -->
@@ -83,29 +88,41 @@
                     <svg class="svg-icon"><use href="#icon-target"></use></svg>
                 </span>
                 <div class="brand-text">
-                    <h1 class="brand-title">ایده‌ها و تمرکز</h1>
-                    <span class="brand-tagline">محیط شخصی ثبت اندیشه و کار عمیق</span>
+                    <h1 class="brand-title" data-i18n="brand_title">ایده‌ها و تمرکز</h1>
+                    <span class="brand-tagline" data-i18n="brand_tagline">محیط شخصی ثبت اندیشه و کار عمیق</span>
                 </div>
             </div>
 
             <div class="header-controls">
                 <!-- شمارنده آرام ایده‌ها -->
                 <div class="status-summary" id="statsBar">
-                    <span class="status-count" title="ایده‌های فعال">
-                        <strong id="statActiveCount">۰</strong> فعال
+                    <span class="status-count" title="ایده‌های فعال" id="statActiveTitle">
+                        <strong id="statActiveCount">۰</strong> <span data-i18n="stat_active">فعال</span>
                     </span>
                     <span class="status-divider">/</span>
-                    <span class="status-count status-count-high" title="اولویت زیاد">
-                        <strong id="statHighCount">۰</strong> نیازمند تمرکز
+                    <span class="status-count status-count-high" title="اولویت زیاد" id="statHighTitle">
+                        <strong id="statHighCount">۰</strong> <span data-i18n="stat_focus">نیازمند تمرکز</span>
                     </span>
                     <span class="status-divider">/</span>
-                    <span class="status-count status-count-done" title="انجام‌شده">
-                        <strong id="statCompletedCount">۰</strong> انجام‌شده
+                    <span class="status-count status-count-done" title="انجام‌شده" id="statCompletedTitle">
+                        <strong id="statCompletedCount">۰</strong> <span data-i18n="stat_completed">انجام‌شده</span>
                     </span>
                 </div>
 
+                <!-- سلکتور مینیمال ۵ زبان -->
+                <div class="lang-selector-wrapper" title="انتخاب زبان" data-i18n-title="lang_select_title">
+                    <svg class="svg-icon-xs lang-globe-icon" aria-hidden="true"><use href="#icon-globe"></use></svg>
+                    <select id="languageSelect" class="lang-select" aria-label="انتخاب زبان">
+                        <option value="fa">فارسی</option>
+                        <option value="en">English</option>
+                        <option value="ar">العربية</option>
+                        <option value="ja">日本語</option>
+                        <option value="it">Italiano</option>
+                    </select>
+                </div>
+
                 <!-- تغییر تم -->
-                <button type="button" id="themeToggleBtn" class="btn-theme" title="تغییر تم (تیره / روشن)" aria-label="تغییر حالت نمایش">
+                <button type="button" id="themeToggleBtn" class="btn-theme" title="تغییر تم (تیره / روشن)" data-i18n-title="theme_toggle_title" aria-label="تغییر حالت نمایش">
                     <svg class="svg-icon" id="themeSvg"><use href="#icon-sun"></use></svg>
                 </button>
             </div>
@@ -117,15 +134,15 @@
         <div class="nav-inner">
             <div class="nav-tabs">
                 <button type="button" class="nav-tab active" data-tab="activeTab" id="tabBtnActive">
-                    <span>در حال انجام</span>
+                    <span data-i18n="tab_active">در حال انجام</span>
                     <span class="tab-counter" id="activeBadge">۰</span>
                 </button>
                 <button type="button" class="nav-tab nav-tab-focus" data-tab="focusTab" id="tabBtnFocus">
                     <svg class="svg-icon-sm"><use href="#icon-target"></use></svg>
-                    <span>کانون تمرکز</span>
+                    <span data-i18n="tab_focus">کانون تمرکز</span>
                 </button>
                 <button type="button" class="nav-tab" data-tab="completedTab" id="tabBtnCompleted">
-                    <span>بایگانی انجام‌شده</span>
+                    <span data-i18n="tab_completed">بایگانی انجام‌شده</span>
                     <span class="tab-counter" id="completedBadge">۰</span>
                 </button>
             </div>
@@ -137,13 +154,13 @@
         <div class="update-banner-inner">
             <div class="update-banner-info">
                 <svg class="svg-icon-sm update-icon"><use href="#icon-sparkles"></use></svg>
-                <span class="update-text">نسخه جدید <strong id="updateVersionTag"></strong> در گیت‌هاب در دسترس است!</span>
+                <span class="update-text"><span data-i18n="update_banner_prefix">نسخه جدید</span> <strong id="updateVersionTag"></strong> <span data-i18n="update_banner_suffix">در گیت‌هاب در دسترس است!</span></span>
             </div>
             <div class="update-banner-actions">
-                <a id="updateDownloadLink" href="https://github.com/raza6589his-collab/ideas-focus/releases/latest" target="_blank" rel="noopener noreferrer" class="btn-update-link">
+                <a id="updateDownloadLink" href="https://github.com/raza6589his-collab/ideas-focus/releases/latest" target="_blank" rel="noopener noreferrer" class="btn-update-link" data-i18n="update_banner_btn">
                     مشاهده و دریافت نسخه جدید از گیت‌هاب
                 </a>
-                <button type="button" id="dismissUpdateBtn" class="btn-update-dismiss" title="بستن این اعلان">
+                <button type="button" id="dismissUpdateBtn" class="btn-update-dismiss" title="بستن این اعلان" data-i18n-title="dismiss_update">
                     <svg class="svg-icon-xs"><use href="#icon-close"></use></svg>
                 </button>
             </div>
@@ -160,8 +177,8 @@
             <div class="hero-capture">
                 <form id="quickCaptureForm" class="capture-box" autocomplete="off">
                     <div class="capture-header">
-                        <label for="quickTitleInput" class="capture-heading">چه چیزی الان توی ذهنت هست؟</label>
-                        <span class="capture-sub">ثبتش کن؛ بعداً بهش رسیدگی می‌کنیم.</span>
+                        <label for="quickTitleInput" class="capture-heading" data-i18n="capture_heading">چه چیزی الان توی ذهنت هست؟</label>
+                        <span class="capture-sub" data-i18n="capture_sub">ثبتش کن؛ بعداً بهش رسیدگی می‌کنیم.</span>
                     </div>
 
                     <div class="capture-input-row">
@@ -170,6 +187,7 @@
                             id="quickTitleInput" 
                             class="capture-input" 
                             placeholder="ایده‌ات را کوتاه بنویس..." 
+                            data-i18n-placeholder="capture_placeholder"
                             maxlength="160"
                             required
                         >
@@ -178,27 +196,27 @@
                     <!-- نوار ابزار ثبت سریع: تنظیم اولویت و دکمه افزودن یادداشت اختیاری -->
                     <div class="capture-toolbar">
                         <div class="capture-priority-group" role="radiogroup" aria-label="انتخاب اولویت ایده">
-                            <span class="priority-label">اولویت:</span>
+                            <span class="priority-label" data-i18n="priority_label">اولویت:</span>
                             <label class="priority-choice priority-choice-high">
                                 <input type="radio" name="quickPriority" value="high">
-                                <span class="choice-pill"><span class="dot dot-high"></span> زیاد</span>
+                                <span class="choice-pill"><span class="dot dot-high"></span> <span data-i18n="priority_high">زیاد</span></span>
                             </label>
                             <label class="priority-choice priority-choice-medium">
                                 <input type="radio" name="quickPriority" value="medium" checked>
-                                <span class="choice-pill"><span class="dot dot-medium"></span> متوسط</span>
+                                <span class="choice-pill"><span class="dot dot-medium"></span> <span data-i18n="priority_medium">متوسط</span></span>
                             </label>
                             <label class="priority-choice priority-choice-low">
                                 <input type="radio" name="quickPriority" value="low">
-                                <span class="choice-pill"><span class="dot dot-low"></span> کم</span>
+                                <span class="choice-pill"><span class="dot dot-low"></span> <span data-i18n="priority_low">کم</span></span>
                             </label>
                         </div>
 
                         <div class="capture-actions">
                             <button type="button" id="toggleDescBtn" class="btn-text-action" title="افزودن توضیحات یا پیوند اختیاری">
-                                <span id="toggleDescIcon">+</span> توضیحات
+                                <span id="toggleDescIcon">+</span> <span data-i18n="toggle_desc">توضیحات</span>
                             </button>
                             <button type="submit" class="btn-submit-idea" id="quickSubmitBtn">
-                                <span>ثبت ایده</span>
+                                <span data-i18n="submit_idea">ثبت ایده</span>
                                 <span class="shortcut-key">↵</span>
                             </button>
                         </div>
@@ -210,6 +228,7 @@
                             id="quickDescInput" 
                             class="capture-textarea" 
                             placeholder="یادداشت‌ها، پیوندها یا فرضیات اولیه (اختیاری)..."
+                            data-i18n-placeholder="desc_placeholder"
                             rows="2"
                         ></textarea>
                     </div>
@@ -227,23 +246,24 @@
                         id="activeSearchInput" 
                         class="search-field" 
                         placeholder="جستجو در ایده‌ها... (Ctrl+K)"
+                        data-i18n-placeholder="search_placeholder"
                     >
-                    <button type="button" id="clearActiveSearch" class="btn-clear" title="پاک کردن جستجو" style="display: none;">
+                    <button type="button" id="clearActiveSearch" class="btn-clear" title="پاک کردن جستجو" data-i18n-title="clear_search" style="display: none;">
                         <svg class="svg-icon-xs"><use href="#icon-close"></use></svg>
                     </button>
                 </div>
 
                 <div class="priority-filters" role="group" aria-label="فیلتر بر اساس اولویت">
-                    <button type="button" class="filter-btn active" data-priority-filter="all">همه</button>
-                    <button type="button" class="filter-btn filter-btn-high" data-priority-filter="high">زیاد</button>
-                    <button type="button" class="filter-btn filter-btn-medium" data-priority-filter="medium">متوسط</button>
-                    <button type="button" class="filter-btn filter-btn-low" data-priority-filter="low">کم</button>
+                    <button type="button" class="filter-btn active" data-priority-filter="all" data-i18n="filter_all">همه</button>
+                    <button type="button" class="filter-btn filter-btn-high" data-priority-filter="high" data-i18n="priority_high">زیاد</button>
+                    <button type="button" class="filter-btn filter-btn-medium" data-priority-filter="medium" data-i18n="priority_medium">متوسط</button>
+                    <button type="button" class="filter-btn filter-btn-low" data-priority-filter="low" data-i18n="priority_low">کم</button>
                 </div>
             </div>
 
             <!-- سرتیتر فهرست ایده‌ها -->
             <div class="section-meta">
-                <span class="meta-label">فهرست ایده‌ها</span>
+                <span class="meta-label" data-i18n="section_ideas">فهرست ایده‌ها</span>
                 <span class="meta-rule"></span>
             </div>
 
@@ -257,8 +277,8 @@
                 <div class="empty-mark" aria-hidden="true">
                     <svg class="svg-icon-lg"><use href="#icon-target"></use></svg>
                 </div>
-                <h3 class="empty-headline">فعلاً چیزی اینجا نیست.</h3>
-                <p class="empty-text">هر ایده‌ای که به ذهنت رسید، همین‌جا بنویس تا ذهنت آزاد بشه.</p>
+                <h3 class="empty-headline" data-i18n="empty_active_headline">فعلاً چیزی اینجا نیست.</h3>
+                <p class="empty-text" data-i18n="empty_active_text">هر ایده‌ای که به ذهنت رسید، همین‌جا بنویس تا ذهنت آزاد بشه.</p>
             </div>
         </section>
 
@@ -268,9 +288,9 @@
                 <div class="focus-kicker">
                     <span class="focus-indicator-pill">
                         <svg class="svg-icon-xs"><use href="#icon-target"></use></svg>
-                        کانون تمرکز
+                        <span data-i18n="focus_kicker">کانون تمرکز</span>
                     </span>
-                    <span class="focus-motto">الان فقط همین یک مورد اهمیت دارد.</span>
+                    <span class="focus-motto" data-i18n="focus_motto">الان فقط همین یک مورد اهمیت دارد.</span>
                 </div>
 
                 <!-- کارت کانون تمرکز -->
@@ -283,9 +303,9 @@
                     <div class="empty-mark" aria-hidden="true">
                         <svg class="svg-icon-lg"><use href="#icon-check"></use></svg>
                     </div>
-                    <h3 class="empty-headline">چیزی برای تمرکز وجود ندارد.</h3>
-                    <p class="empty-text">یا همه ایده‌ها به پایان رسیده‌اند، یا هنوز ایده‌ای در اولویت بالا ثبت نشده است.</p>
-                    <button type="button" class="btn-action-quiet" id="focusGoToActiveBtn">بازگشت به فهرست ایده‌ها</button>
+                    <h3 class="empty-headline" data-i18n="empty_focus_headline">چیزی برای تمرکز وجود ندارد.</h3>
+                    <p class="empty-text" data-i18n="empty_focus_text">یا همه ایده‌ها به پایان رسیده‌اند، یا هنوز ایده‌ای در اولویت بالا ثبت نشده است.</p>
+                    <button type="button" class="btn-action-quiet" id="focusGoToActiveBtn" data-i18n="focus_back_btn">بازگشت به فهرست ایده‌ها</button>
                 </div>
             </div>
         </section>
@@ -295,8 +315,8 @@
             
             <div class="archive-header">
                 <div>
-                    <h2 class="archive-title">بایگانی ایده‌های انجام‌شده</h2>
-                    <p class="archive-desc" id="completedCountText">ایده‌های به پایان رسیده در این بخش نگهداری می‌شوند.</p>
+                    <h2 class="archive-title" data-i18n="archive_title">بایگانی ایده‌های انجام‌شده</h2>
+                    <p class="archive-desc" id="completedCountText" data-i18n="archive_desc">ایده‌های به پایان رسیده در این بخش نگهداری می‌شوند.</p>
                 </div>
 
                 <div class="search-wrapper archive-search">
@@ -308,8 +328,9 @@
                         id="completedSearchInput" 
                         class="search-field" 
                         placeholder="جستجو در بایگانی..."
+                        data-i18n-placeholder="archive_search_placeholder"
                     >
-                    <button type="button" id="clearCompletedSearch" class="btn-clear" title="پاک کردن جستجو" style="display: none;">
+                    <button type="button" id="clearCompletedSearch" class="btn-clear" title="پاک کردن جستجو" data-i18n-title="clear_search" style="display: none;">
                         <svg class="svg-icon-xs"><use href="#icon-close"></use></svg>
                     </button>
                 </div>
@@ -325,8 +346,8 @@
                 <div class="empty-mark" aria-hidden="true">
                     <svg class="svg-icon-lg"><use href="#icon-check"></use></svg>
                 </div>
-                <h3 class="empty-headline">هنوز چیزی را تمام نکرده‌ای.</h3>
-                <p class="empty-text">وقتی کاری را تمام کردی، در آرامش اینجا بایگانی می‌شود.</p>
+                <h3 class="empty-headline" data-i18n="empty_archive_headline">هنوز چیزی را تمام نکرده‌ای.</h3>
+                <p class="empty-text" data-i18n="empty_archive_text">وقتی کاری را تمام کردی، در آرامش اینجا بایگانی می‌شود.</p>
             </div>
         </section>
 
@@ -336,12 +357,12 @@
     <footer class="app-footer">
         <div class="footer-inner">
             <div class="footer-shortcuts">
-                <span class="shortcut-item"><kbd>Ctrl</kbd> + <kbd>N</kbd> ثبت ایده</span>
-                <span class="shortcut-item"><kbd>Ctrl</kbd> + <kbd>K</kbd> جستجو</span>
-                <span class="shortcut-item"><kbd>Ctrl</kbd> + <kbd>F</kbd> کانون تمرکز</span>
-                <span class="shortcut-item"><kbd>Esc</kbd> بستن پنجره</span>
+                <span class="shortcut-item"><kbd>Ctrl</kbd> + <kbd>N</kbd> <span data-i18n="shortcut_capture">ثبت ایده</span></span>
+                <span class="shortcut-item"><kbd>Ctrl</kbd> + <kbd>K</kbd> <span data-i18n="shortcut_search">جستجو</span></span>
+                <span class="shortcut-item"><kbd>Ctrl</kbd> + <kbd>F</kbd> <span data-i18n="shortcut_focus">کانون تمرکز</span></span>
+                <span class="shortcut-item"><kbd>Esc</kbd> <span data-i18n="shortcut_close">بستن پنجره</span></span>
             </div>
-            <div class="footer-brand">
+            <div class="footer-brand" data-i18n="footer_brand">
                 ثبت سریع • اولویت‌بندی آگاهانه • تمرکز بر یک ایده
             </div>
         </div>
@@ -351,8 +372,8 @@
     <div id="editModal" class="modal-layer" style="display: none;">
         <div class="modal-box">
             <div class="modal-top">
-                <h3 class="modal-heading">ویرایش ایده</h3>
-                <button type="button" class="btn-icon-close" id="closeEditModalBtn" aria-label="بستن پنجره">
+                <h3 class="modal-heading" data-i18n="edit_modal_title">ویرایش ایده</h3>
+                <button type="button" class="btn-icon-close" id="closeEditModalBtn" aria-label="بستن پنجره" data-i18n-title="close_modal">
                     <svg class="svg-icon-sm"><use href="#icon-close"></use></svg>
                 </button>
             </div>
@@ -360,36 +381,36 @@
                 <input type="hidden" id="editIdeaId">
                 
                 <div class="input-block">
-                    <label for="editTitleInput" class="input-label">عنوان ایده</label>
+                    <label for="editTitleInput" class="input-label" data-i18n="edit_title_label">عنوان ایده</label>
                     <input type="text" id="editTitleInput" class="text-input" maxlength="160" required>
                 </div>
 
                 <div class="input-block">
-                    <label for="editDescInput" class="input-label">یادداشت‌ها و جزئیات</label>
-                    <textarea id="editDescInput" class="textarea-input" rows="3" placeholder="توضیحات اختیاری..."></textarea>
+                    <label for="editDescInput" class="input-label" data-i18n="edit_desc_label">یادداشت‌ها و جزئیات</label>
+                    <textarea id="editDescInput" class="textarea-input" rows="3" placeholder="توضیحات اختیاری..." data-i18n-placeholder="edit_desc_placeholder"></textarea>
                 </div>
 
                 <div class="input-block">
-                    <label class="input-label">سطح اولویت</label>
+                    <label class="input-label" data-i18n="edit_priority_label">سطح اولویت</label>
                     <div class="priority-modal-choices">
                         <label class="priority-choice priority-choice-high">
                             <input type="radio" name="editPriority" value="high">
-                            <span class="choice-pill"><span class="dot dot-high"></span> زیاد</span>
+                            <span class="choice-pill"><span class="dot dot-high"></span> <span data-i18n="priority_high">زیاد</span></span>
                         </label>
                         <label class="priority-choice priority-choice-medium">
                             <input type="radio" name="editPriority" value="medium">
-                            <span class="choice-pill"><span class="dot dot-medium"></span> متوسط</span>
+                            <span class="choice-pill"><span class="dot dot-medium"></span> <span data-i18n="priority_medium">متوسط</span></span>
                         </label>
                         <label class="priority-choice priority-choice-low">
                             <input type="radio" name="editPriority" value="low">
-                            <span class="choice-pill"><span class="dot dot-low"></span> کم</span>
+                            <span class="choice-pill"><span class="dot dot-low"></span> <span data-i18n="priority_low">کم</span></span>
                         </label>
                     </div>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn-cancel" id="cancelEditBtn">انصراف</button>
-                    <button type="submit" class="btn-save" id="saveEditBtn">ذخیره تغییرات</button>
+                    <button type="button" class="btn-cancel" id="cancelEditBtn" data-i18n="btn_cancel">انصراف</button>
+                    <button type="submit" class="btn-save" id="saveEditBtn" data-i18n="btn_save">ذخیره تغییرات</button>
                 </div>
             </form>
         </div>
@@ -399,19 +420,19 @@
     <div id="deleteModal" class="modal-layer" style="display: none;">
         <div class="modal-box modal-box-danger">
             <div class="modal-top">
-                <h3 class="modal-heading">حذف دائمی</h3>
-                <button type="button" class="btn-icon-close" id="closeDeleteModalBtn" aria-label="بستن پنجره">
+                <h3 class="modal-heading" data-i18n="delete_modal_title">حذف دائمی</h3>
+                <button type="button" class="btn-icon-close" id="closeDeleteModalBtn" aria-label="بستن پنجره" data-i18n-title="close_modal">
                     <svg class="svg-icon-sm"><use href="#icon-close"></use></svg>
                 </button>
             </div>
             <div class="modal-content-text">
-                <p>آیا از حذف همیشگی این ایده اطمینان داری؟</p>
+                <p data-i18n="delete_confirm_q">آیا از حذف همیشگی این ایده اطمینان داری؟</p>
                 <div class="target-title-preview" id="deleteIdeaTitle">...</div>
-                <p class="muted-warning">این ایده برای همیشه از دیتابیس پاک خواهد شد و قابل بازگشت نیست.</p>
+                <p class="muted-warning" data-i18n="delete_warning">این ایده برای همیشه از دیتابیس پاک خواهد شد و قابل بازگشت نیست.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn-cancel" id="cancelDeleteBtn">انصراف</button>
-                <button type="button" class="btn-danger-confirm" id="confirmDeleteBtn">حذف برای همیشه</button>
+                <button type="button" class="btn-cancel" id="cancelDeleteBtn" data-i18n="btn_cancel">انصراف</button>
+                <button type="button" class="btn-danger-confirm" id="confirmDeleteBtn" data-i18n="btn_delete_confirm">حذف برای همیشه</button>
             </div>
         </div>
     </div>
@@ -423,8 +444,8 @@
                 <span class="toast-indicator" aria-hidden="true">
                     <svg class="svg-icon-sm"><use href="#icon-check"></use></svg>
                 </span>
-                <span id="toastMessage" class="toast-text">ایده به پایان رسید و بایگانی شد.</span>
-                <button type="button" id="toastUndoBtn" class="toast-btn-undo">برگرداندن (Undo)</button>
+                <span id="toastMessage" class="toast-text" data-i18n="toast_completed">ایده به پایان رسید و بایگانی شد.</span>
+                <button type="button" id="toastUndoBtn" class="toast-btn-undo" data-i18n="toast_undo">برگرداندن (Undo)</button>
             </div>
             <!-- نوار خطی تایمر ۵ ثانیه‌ای -->
             <div class="toast-timer-bar">
@@ -433,6 +454,8 @@
         </div>
     </div>
 
+    <!-- ماژول بین‌المللی‌سازی ۵ زبانه -->
+    <script src="{{ url_for('static', filename='js/i18n.js') }}"></script>
     <!-- موتور ذخیره‌سازی آفلاین برای اندروید و وب -->
     <script src="{{ url_for('static', filename='js/storage_adapter.js') }}"></script>
     <!-- اسکریپت جاوااسکریپت فرانت‌اند -->

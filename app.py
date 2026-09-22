@@ -29,7 +29,7 @@ app = Flask(
 db = Database()
 
 # اطلاعات نسخه و ریپازیتوری رسمی گیت‌هاب جهت بررسی خودکار به‌روزرسانی‌ها
-APP_VERSION = "1.0.0"
+APP_VERSION = "1.1.0"
 GITHUB_REPO = "raza6589his-collab/ideas-focus"
 
 

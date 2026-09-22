@@ -21,7 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- ارجاعات به المان‌های DOM ---
     const dom = {
-        // سربرگ و تم
+        // سربرگ، زبان و تم
+        languageSelect: document.getElementById('languageSelect'),
         themeToggleBtn: document.getElementById('themeToggleBtn'),
         themeSvg: document.getElementById('themeSvg'),
         statActiveCount: document.getElementById('statActiveCount'),
@@ -129,9 +130,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ================= فرمت زمانی و تاریخ به فارسی =================
+    // کمکی ترجمه محلی
+    function t(key, params) {
+        return window.i18n ? window.i18n.t(key, params) : key;
+    }
+
+    // ================= فرمت زمانی و تاریخ چندزبانه =================
     function formatDateTime(isoString) {
         if (!isoString) return '';
+        if (window.i18n) return window.i18n.formatDateTime(isoString);
         try {
             const date = new Date(isoString);
             return new Intl.DateTimeFormat('fa-IR', {
@@ -145,6 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function formatRelativeTime(isoString) {
         if (!isoString) return '';
+        if (window.i18n) return window.i18n.formatRelativeTime(isoString);
         try {
             const date = new Date(isoString);
             const now = new Date();
@@ -198,12 +206,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateStats(stats) {
         if (!stats) return;
         state.stats = stats;
-        dom.statActiveCount.textContent = Number(stats.active).toLocaleString('fa-IR');
-        dom.statHighCount.textContent = Number(stats.high_priority).toLocaleString('fa-IR');
-        dom.statCompletedCount.textContent = Number(stats.completed).toLocaleString('fa-IR');
-        dom.activeBadge.textContent = Number(stats.active).toLocaleString('fa-IR');
-        dom.completedBadge.textContent = Number(stats.completed).toLocaleString('fa-IR');
-        dom.completedCountText.textContent = `${Number(stats.completed).toLocaleString('fa-IR')} ایده با موفقیت به سرانجام رسیده و بایگانی شده است.`;
+        const fmt = (n) => window.i18n ? window.i18n.formatNumber(n) : Number(n).toLocaleString();
+        dom.statActiveCount.textContent = fmt(stats.active);
+        dom.statHighCount.textContent = fmt(stats.high_priority);
+        dom.statCompletedCount.textContent = fmt(stats.completed);
+        dom.activeBadge.textContent = fmt(stats.active);
+        dom.completedBadge.textContent = fmt(stats.completed);
+        dom.completedCountText.textContent = t('archive_desc_with_count', { count: fmt(stats.completed) });
     }
 
     // ================= رندر سطرهای سرمقاله‌ای ایده‌های فعال =================
@@ -233,14 +242,10 @@ document.addEventListener('DOMContentLoaded', () => {
         row.className = `editorial-row priority-${idea.priority} ${idea.is_focus_pinned ? 'is-pinned' : ''}`;
         row.dataset.id = idea.id;
 
-        const priorityNames = {
-            'high': 'زیاد',
-            'medium': 'متوسط',
-            'low': 'کم'
-        };
+        const priorityName = t(`priority_${idea.priority}`);
 
         const pinBadgeHtml = idea.is_focus_pinned 
-            ? `<span class="pin-tag" title="سنجاق‌شده به عنوان کانون تمرکز اصلی"><svg class="svg-icon-xs"><use href="#icon-pin"></use></svg> سنجاق تمرکز</span>` 
+            ? `<span class="pin-tag" title="${t('item_pin_title')}"><svg class="svg-icon-xs"><use href="#icon-pin"></use></svg> ${t('item_pin_tag')}</span>` 
             : '';
 
         const descHtml = idea.description 
@@ -248,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
             : '';
 
         row.innerHTML = `
-            <button type="button" class="row-check-btn" title="علامت‌گذاری به عنوان انجام‌شده" aria-label="تکمیل ایده">
+            <button type="button" class="row-check-btn" title="${t('item_check_title')}" aria-label="${t('item_check_title')}">
                 <svg class="svg-icon-sm check-svg"><use href="#icon-check"></use></svg>
             </button>
 
@@ -259,9 +264,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 ${descHtml}
                 <div class="row-meta">
-                    <button type="button" class="meta-priority-indicator priority-${idea.priority}" title="کلیک برای تغییر اولویت" data-action="cycle-priority">
+                    <button type="button" class="meta-priority-indicator priority-${idea.priority}" title="${t('item_cycle_priority_title')}" data-action="cycle-priority">
                         <span class="dot dot-${idea.priority}"></span>
-                        اولویت ${priorityNames[idea.priority] || idea.priority}
+                        ${t('item_priority_prefix')} ${priorityName}
                     </button>
                     <span class="meta-bullet">·</span>
                     <span class="meta-time">${formatRelativeTime(idea.created_at)}</span>
@@ -269,11 +274,11 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
 
             <div class="row-actions">
-                <button type="button" class="row-action-btn focus-action" data-action="focus" title="تمرکز روی این ایده">
+                <button type="button" class="row-action-btn focus-action" data-action="focus" title="${t('item_action_focus')}">
                     <svg class="svg-icon-xs"><use href="#icon-target"></use></svg>
-                    <span>تمرکز</span>
+                    <span>${t('item_action_focus')}</span>
                 </button>
-                <button type="button" class="row-action-btn edit-action" data-action="edit" title="ویرایش">
+                <button type="button" class="row-action-btn edit-action" data-action="edit" title="${t('item_action_edit')}">
                     <svg class="svg-icon-xs"><use href="#icon-edit"></use></svg>
                 </button>
             </div>
@@ -332,17 +337,13 @@ document.addEventListener('DOMContentLoaded', () => {
         row.className = `editorial-row completed-row priority-${idea.priority}`;
         row.dataset.id = idea.id;
 
-        const priorityNames = {
-            'high': 'زیاد',
-            'medium': 'متوسط',
-            'low': 'کم'
-        };
+        const priorityName = t(`priority_${idea.priority}`);
 
         const descHtml = idea.description 
             ? `<div class="row-desc">${escapeHtml(idea.description)}</div>` 
             : '';
 
-        const completedDateText = idea.completed_at ? `انجام شد: ${formatDateTime(idea.completed_at)}` : '';
+        const completedDateText = idea.completed_at ? `${t('completed_on')} ${formatDateTime(idea.completed_at)}` : '';
 
         row.innerHTML = `
             <div class="completed-check-icon" aria-hidden="true">
@@ -357,7 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="row-meta">
                     <span class="meta-priority-indicator priority-${idea.priority}">
                         <span class="dot dot-${idea.priority}"></span>
-                        اولویت ${priorityNames[idea.priority] || idea.priority}
+                        ${t('item_priority_prefix')} ${priorityName}
                     </span>
                     <span class="meta-bullet">·</span>
                     <span class="meta-time">${completedDateText}</span>
@@ -365,11 +366,11 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
 
             <div class="row-actions">
-                <button type="button" class="row-action-btn restore-action" data-action="restore" title="بازگردانی به لیست ایده‌های در حال انجام">
+                <button type="button" class="row-action-btn restore-action" data-action="restore" title="${t('item_action_restore')}">
                     <svg class="svg-icon-xs"><use href="#icon-restore"></use></svg>
-                    <span>برگرداندن</span>
+                    <span>${t('item_action_restore')}</span>
                 </button>
-                <button type="button" class="row-action-btn delete-action" data-action="delete" title="حذف دائمی از پایگاه‌داده">
+                <button type="button" class="row-action-btn delete-action" data-action="delete" title="${t('item_action_delete')}">
                     <svg class="svg-icon-xs"><use href="#icon-trash"></use></svg>
                 </button>
             </div>
@@ -399,25 +400,22 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.focusEmptyState.style.display = 'none';
         dom.focusCard.style.display = 'flex';
 
-        const priorityLabels = {
-            'high': 'اولویت زیاد',
-            'medium': 'اولویت متوسط',
-            'low': 'اولویت کم'
-        };
+        const priorityName = t(`priority_${idea.priority}`);
 
         const descHtml = idea.description 
             ? `<div class="focus-note-box">${escapeHtml(idea.description)}</div>` 
             : '';
 
-        const pinBtnText = idea.is_focus_pinned ? 'سنجاق تمرکز برداشته شود' : 'سنجاق به عنوان تمرکز اصلی';
+        const pinBtnText = idea.is_focus_pinned ? t('focus_pin_off') : t('focus_pin_on');
+        const createdDateText = `${t('focus_created_date')} ${formatDateTime(idea.created_at)}`;
 
         dom.focusCard.innerHTML = `
             <div class="focus-top-meta">
                 <span class="meta-priority-indicator priority-${idea.priority}">
                     <span class="dot dot-${idea.priority}"></span>
-                    ${priorityLabels[idea.priority] || idea.priority}
+                    ${t('item_priority_prefix')} ${priorityName}
                 </span>
-                <span class="focus-created-date">ثبت شده در: ${formatDateTime(idea.created_at)}</span>
+                <span class="focus-created-date">${createdDateText}</span>
             </div>
 
             <h2 class="focus-headline">${escapeHtml(idea.title)}</h2>
@@ -427,7 +425,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="focus-action-group">
                 <button type="button" class="btn-focus-primary" id="focusCompleteBtn">
                     <svg class="svg-icon"><use href="#icon-check"></use></svg>
-                    <span>این ایده انجام شد</span>
+                    <span>${t('focus_complete_btn')}</span>
                 </button>
 
                 <div class="focus-secondary-actions">
@@ -438,7 +436,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     <button type="button" class="btn-focus-sec" id="focusExitBtn">
                         <svg class="svg-icon-xs"><use href="#icon-arrow-right"></use></svg>
-                        <span>بازگشت به فهرست</span>
+                        <span>${t('focus_back_btn')}</span>
                     </button>
                 </div>
             </div>
@@ -577,7 +575,8 @@ document.addEventListener('DOMContentLoaded', () => {
         clearUndoTimer();
         state.undoIdeaId = ideaId;
 
-        dom.toastMessage.textContent = 'ایده با موفقیت به پایان رسید و بایگانی شد.';
+        dom.toastMessage.textContent = t('toast_completed');
+        dom.toastUndoBtn.textContent = t('toast_undo');
         dom.toast.style.display = 'flex';
 
         // انیمیشن خط تایمر ۵ ثانیه‌ای
@@ -902,7 +901,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // ================= مقداردهی اولیه زبان و گوش دادن به تغییر زبان =================
+    function initLanguage() {
+        if (window.i18n) {
+            window.i18n.init();
+            if (dom.languageSelect) {
+                dom.languageSelect.value = window.i18n.currentLang;
+                dom.languageSelect.addEventListener('change', (e) => {
+                    window.i18n.setLanguage(e.target.value);
+                });
+            }
+        }
+
+        window.addEventListener('languageChanged', () => {
+            if (dom.languageSelect && window.i18n) {
+                dom.languageSelect.value = window.i18n.currentLang;
+            }
+            updateStats(state.stats);
+            renderActiveIdeas();
+            renderCompletedIdeas();
+            if (state.activeTab === 'focusTab') {
+                renderFocusMode();
+            }
+        });
+    }
+
     // آغاز اجرای برنامه
+    initLanguage();
     initTheme();
     loadActiveIdeas();
     setTimeout(checkForUpdates, 1500);
