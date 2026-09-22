@@ -216,25 +216,49 @@ class OfflineStorageEngine {
 
         // 12. Check update
         if (path === '/api/check-update') {
-            try {
-                const res = await fetch('https://api.github.com/repos/raza6589his-collab/ideas-focus/releases/latest');
-                if (res.ok) {
-                    const data = await res.json();
-                    const tag = (data.tag_name || '').replace(/^v/, '');
-                    const current = '1.1.0';
-                    const isNewer = tag > current;
-                    return {
-                        success: true,
-                        data: {
-                            update_available: isNewer,
-                            latest_version: tag,
-                            current_version: current,
-                            release_url: data.html_url
-                        }
-                    };
+            const current = '1.1.0';
+            const repos = [
+                'https://api.github.com/repos/raza6589his-collab/ideas-focus-Apk-/releases/latest',
+                'https://api.github.com/repos/raza6589his-collab/ideas-focus/releases/latest'
+            ];
+
+            for (const repoUrl of repos) {
+                try {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 6000);
+                    const res = await fetch(repoUrl, {
+                        signal: controller.signal,
+                        headers: { 'Accept': 'application/vnd.github.v3+json' }
+                    });
+                    clearTimeout(timeoutId);
+
+                    if (res.ok) {
+                        const data = await res.json();
+                        const rawTag = (data.tag_name || '').trim();
+                        const cleanTag = rawTag.replace(/^v/i, '').replace(/-android$/i, '');
+
+                        const parseV = (v) => v.split('.').map(n => parseInt(n, 10) || 0);
+                        const [maj1, min1, pat1] = parseV(cleanTag);
+                        const [maj2, min2, pat2] = parseV(current);
+
+                        const isNewer = (maj1 > maj2) || (maj1 === maj2 && min1 > min2) || (maj1 === maj2 && min1 === min2 && pat1 > pat2);
+
+                        return {
+                            success: true,
+                            data: {
+                                update_available: isNewer,
+                                latest_version: cleanTag,
+                                current_version: current,
+                                release_url: data.html_url || 'https://github.com/raza6589his-collab/ideas-focus-Apk-/releases/latest'
+                            }
+                        };
+                    }
+                } catch (e) {
+                    console.warn('Update check failed on', repoUrl, e);
                 }
-            } catch {}
-            return { success: true, data: { update_available: false, current_version: '1.1.0' } };
+            }
+
+            return { success: true, data: { update_available: false, current_version: current } };
         }
 
         return { success: false, message: 'مسیر نامعتبر است' };

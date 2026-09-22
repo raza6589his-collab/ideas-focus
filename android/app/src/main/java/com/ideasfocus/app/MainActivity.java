@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         settings.setDatabaseEnabled(true);
         settings.setAllowFileAccess(true);
         settings.setAllowContentAccess(true);
+        settings.setAllowFileAccessFromFileURLs(true);
+        settings.setAllowUniversalAccessFromFileURLs(true);
         settings.setLoadWithOverviewMode(true);
         settings.setUseWideViewPort(true);
         settings.setBuiltInZoomControls(false);
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         settings.setTextZoom(100);
 
         // افزودن امضای اختصاصی به User-Agent
-        String customUA = settings.getUserAgentString() + " IdeasFocusAndroid/1.0";
+        String customUA = settings.getUserAgentString() + " IdeasFocusAndroid/1.1";
         settings.setUserAgentString(customUA);
 
         webView.setWebChromeClient(new WebChromeClient() {
