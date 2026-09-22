@@ -13,8 +13,11 @@ dist/
 *.manifest
 *.spec.bak
 
-# Inno Setup installer output
+# Inno Setup and Android APK installer outputs
 installer/*.exe
+installer/*.apk
+*.apk
+packaging/push_apk_repo.py
 
 # SQLite Databases & WAL journaling files (Keep repo clean, users have their own DB in %APPDATA%)
 *.db
