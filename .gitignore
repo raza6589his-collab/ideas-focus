@@ -54,3 +54,4 @@ desktop.ini
 *.log
 scratch/
 test_install/
+push_to_github.bat
