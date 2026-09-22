@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ایده‌ها و تمرکز | Focus &amp; Idea Engine</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/app_icon.png') }}">
+    <!-- استایل‌ها -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="dark-theme">
+
+    <!-- نمادهای برداری SVG عمومی (بدون اموجی) -->
+    <svg style="display: none;" aria-hidden="true">
+        <symbol id="icon-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="2" x2="12" y2="4"></line>
+            <line x1="12" y1="20" x2="12" y2="22"></line>
+            <line x1="2" y1="12" x2="4" y2="12"></line>
+            <line x1="20" y1="12" x2="22" y2="12"></line>
+        </symbol>
+        <symbol id="icon-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"></path>
+        </symbol>
+        <symbol id="icon-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="17" x2="12" y2="22"></line>
+            <path d="M5 17h14v-2l-2-2V5a1 1 0 0 0-1-1h-8a1 1 0 0 0-1 1v8l-2 2v2z"></path>
+        </symbol>
+        <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </symbol>
+        <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </symbol>
+        <symbol id="icon-edit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+        </symbol>
+        <symbol id="icon-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+        </symbol>
+        <symbol id="icon-restore" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <polyline points="3 3 3 8 8 8"></polyline>
+        </symbol>
+        <symbol id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </symbol>
+        <symbol id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </symbol>
+        <symbol id="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+        </symbol>
+        <symbol id="icon-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+        </symbol>
+        <symbol id="icon-corner-down-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 10 4 15 9 20"></polyline>
+            <path d="M20 4v7a4 4 0 0 1-4 4H4"></path>
+        </symbol>
+    </svg>
+
+    <!-- سربرگ مینیمال و آرام -->
+    <header class="app-header">
+        <div class="header-inner">
+            <div class="brand">
+                <span class="brand-mark" aria-hidden="true">
+                    <svg class="svg-icon"><use href="#icon-target"></use></svg>
+                </span>
+                <div class="brand-text">
+                    <h1 class="brand-title">ایده‌ها و تمرکز</h1>
+                    <span class="brand-tagline">محیط شخصی ثبت اندیشه و کار عمیق</span>
+                </div>
+            </div>
+
+            <div class="header-controls">
+                <!-- شمارنده آرام ایده‌ها -->
+                <div class="status-summary" id="statsBar">
+                    <span class="status-count" title="ایده‌های فعال">
+                        <strong id="statActiveCount">۰</strong> فعال
+                    </span>
+                    <span class="status-divider">/</span>
+                    <span class="status-count status-count-high" title="اولویت زیاد">
+                        <strong id="statHighCount">۰</strong> نیازمند تمرکز
+                    </span>
+                    <span class="status-divider">/</span>
+                    <span class="status-count status-count-done" title="انجام‌شده">
+                        <strong id="statCompletedCount">۰</strong> انجام‌شده
+                    </span>
+                </div>
+
+                <!-- تغییر تم -->
+                <button type="button" id="themeToggleBtn" class="btn-theme" title="تغییر تم (تیره / روشن)" aria-label="تغییر حالت نمایش">
+                    <svg class="svg-icon" id="themeSvg"><use href="#icon-sun"></use></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- تب‌های اصلی (ناوبری سرمقاله‌ای و تمیز) -->
+    <nav class="nav-section" aria-label="بخش‌های برنامه">
+        <div class="nav-inner">
+            <div class="nav-tabs">
+                <button type="button" class="nav-tab active" data-tab="activeTab" id="tabBtnActive">
+                    <span>در حال انجام</span>
+                    <span class="tab-counter" id="activeBadge">۰</span>
+                </button>
+                <button type="button" class="nav-tab nav-tab-focus" data-tab="focusTab" id="tabBtnFocus">
+                    <svg class="svg-icon-sm"><use href="#icon-target"></use></svg>
+                    <span>کانون تمرکز</span>
+                </button>
+                <button type="button" class="nav-tab" data-tab="completedTab" id="tabBtnCompleted">
+                    <span>بایگانی انجام‌شده</span>
+                    <span class="tab-counter" id="completedBadge">۰</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- بنر اطلاع‌رسانی نسخه جدید در گیت‌هاب (Update Notification Banner) -->
+    <div id="updateBanner" class="update-banner hidden" role="alert" aria-live="polite">
+        <div class="update-banner-inner">
+            <div class="update-banner-info">
+                <svg class="svg-icon-sm update-icon"><use href="#icon-sparkles"></use></svg>
+                <span class="update-text">نسخه جدید <strong id="updateVersionTag"></strong> در گیت‌هاب در دسترس است!</span>
+            </div>
+            <div class="update-banner-actions">
+                <a id="updateDownloadLink" href="https://github.com/raza6589his-collab/ideas-focus/releases/latest" target="_blank" rel="noopener noreferrer" class="btn-update-link">
+                    مشاهده و دریافت نسخه جدید از گیت‌هاب
+                </a>
+                <button type="button" id="dismissUpdateBtn" class="btn-update-dismiss" title="بستن این اعلان">
+                    <svg class="svg-icon-xs"><use href="#icon-close"></use></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- محتوای صفحه -->
+    <main class="main-layout">
+
+        <!-- ================= تب ۱: ایده‌های در حال انجام ================= -->
+        <section id="activeTab" class="tab-content active-content">
+            
+            <!-- کانون ثبت ایده (Hero Capture Arena) -->
+            <div class="hero-capture">
+                <form id="quickCaptureForm" class="capture-box" autocomplete="off">
+                    <div class="capture-header">
+                        <label for="quickTitleInput" class="capture-heading">چه چیزی الان توی ذهنت هست؟</label>
+                        <span class="capture-sub">ثبتش کن؛ بعداً بهش رسیدگی می‌کنیم.</span>
+                    </div>
+
+                    <div class="capture-input-row">
+                        <input 
+                            type="text" 
+                            id="quickTitleInput" 
+                            class="capture-input" 
+                            placeholder="ایده‌ات را کوتاه بنویس..." 
+                            maxlength="160"
+                            required
+                        >
+                    </div>
+
+                    <!-- نوار ابزار ثبت سریع: تنظیم اولویت و دکمه افزودن یادداشت اختیاری -->
+                    <div class="capture-toolbar">
+                        <div class="capture-priority-group" role="radiogroup" aria-label="انتخاب اولویت ایده">
+                            <span class="priority-label">اولویت:</span>
+                            <label class="priority-choice priority-choice-high">
+                                <input type="radio" name="quickPriority" value="high">
+                                <span class="choice-pill"><span class="dot dot-high"></span> زیاد</span>
+                            </label>
+                            <label class="priority-choice priority-choice-medium">
+                                <input type="radio" name="quickPriority" value="medium" checked>
+                                <span class="choice-pill"><span class="dot dot-medium"></span> متوسط</span>
+                            </label>
+                            <label class="priority-choice priority-choice-low">
+                                <input type="radio" name="quickPriority" value="low">
+                                <span class="choice-pill"><span class="dot dot-low"></span> کم</span>
+                            </label>
+                        </div>
+
+                        <div class="capture-actions">
+                            <button type="button" id="toggleDescBtn" class="btn-text-action" title="افزودن توضیحات یا پیوند اختیاری">
+                                <span id="toggleDescIcon">+</span> توضیحات
+                            </button>
+                            <button type="submit" class="btn-submit-idea" id="quickSubmitBtn">
+                                <span>ثبت ایده</span>
+                                <span class="shortcut-key">↵</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- بخش بازشونده یادداشت تکمیلی -->
+                    <div class="capture-notes-area" id="captureDetails">
+                        <textarea 
+                            id="quickDescInput" 
+                            class="capture-textarea" 
+                            placeholder="یادداشت‌ها، پیوندها یا فرضیات اولیه (اختیاری)..."
+                            rows="2"
+                        ></textarea>
+                    </div>
+                </form>
+            </div>
+
+            <!-- نوار ابزار جستجو و فیلتر محتوا -->
+            <div class="list-controls">
+                <div class="search-wrapper">
+                    <span class="search-prefix" aria-hidden="true">
+                        <svg class="svg-icon-sm"><use href="#icon-search"></use></svg>
+                    </span>
+                    <input 
+                        type="text" 
+                        id="activeSearchInput" 
+                        class="search-field" 
+                        placeholder="جستجو در ایده‌ها... (Ctrl+K)"
+                    >
+                    <button type="button" id="clearActiveSearch" class="btn-clear" title="پاک کردن جستجو" style="display: none;">
+                        <svg class="svg-icon-xs"><use href="#icon-close"></use></svg>
+                    </button>
+                </div>
+
+                <div class="priority-filters" role="group" aria-label="فیلتر بر اساس اولویت">
+                    <button type="button" class="filter-btn active" data-priority-filter="all">همه</button>
+                    <button type="button" class="filter-btn filter-btn-high" data-priority-filter="high">زیاد</button>
+                    <button type="button" class="filter-btn filter-btn-medium" data-priority-filter="medium">متوسط</button>
+                    <button type="button" class="filter-btn filter-btn-low" data-priority-filter="low">کم</button>
+                </div>
+            </div>
+
+            <!-- سرتیتر فهرست ایده‌ها -->
+            <div class="section-meta">
+                <span class="meta-label">فهرست ایده‌ها</span>
+                <span class="meta-rule"></span>
+            </div>
+
+            <!-- کانتینر سطرهای ایده (Editorial List Rows) -->
+            <div id="activeIdeasContainer" class="editorial-list">
+                <!-- سطرها از طریق JavaScript تولید می‌شوند -->
+            </div>
+
+            <!-- وضعیت خالی انسانی برای ایده‌های فعال -->
+            <div id="activeEmptyState" class="empty-view" style="display: none;">
+                <div class="empty-mark" aria-hidden="true">
+                    <svg class="svg-icon-lg"><use href="#icon-target"></use></svg>
+                </div>
+                <h3 class="empty-headline">فعلاً چیزی اینجا نیست.</h3>
+                <p class="empty-text">هر ایده‌ای که به ذهنت رسید، همین‌جا بنویس تا ذهنت آزاد بشه.</p>
+            </div>
+        </section>
+
+        <!-- ================= تب ۲: کانون تمرکز (Focus Sanctuary) ================= -->
+        <section id="focusTab" class="tab-content" style="display: none;">
+            <div class="focus-sanctuary">
+                <div class="focus-kicker">
+                    <span class="focus-indicator-pill">
+                        <svg class="svg-icon-xs"><use href="#icon-target"></use></svg>
+                        کانون تمرکز
+                    </span>
+                    <span class="focus-motto">الان فقط همین یک مورد اهمیت دارد.</span>
+                </div>
+
+                <!-- کارت کانون تمرکز -->
+                <div id="focusCard" class="focus-monolith">
+                    <!-- با JavaScript رندر می‌شود -->
+                </div>
+
+                <!-- وضعیت خالی برای کانون تمرکز -->
+                <div id="focusEmptyState" class="empty-view focus-empty" style="display: none;">
+                    <div class="empty-mark" aria-hidden="true">
+                        <svg class="svg-icon-lg"><use href="#icon-check"></use></svg>
+                    </div>
+                    <h3 class="empty-headline">چیزی برای تمرکز وجود ندارد.</h3>
+                    <p class="empty-text">یا همه ایده‌ها به پایان رسیده‌اند، یا هنوز ایده‌ای در اولویت بالا ثبت نشده است.</p>
+                    <button type="button" class="btn-action-quiet" id="focusGoToActiveBtn">بازگشت به فهرست ایده‌ها</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= تب ۳: بایگانی انجام‌شده ================= -->
+        <section id="completedTab" class="tab-content" style="display: none;">
+            
+            <div class="archive-header">
+                <div>
+                    <h2 class="archive-title">بایگانی ایده‌های انجام‌شده</h2>
+                    <p class="archive-desc" id="completedCountText">ایده‌های به پایان رسیده در این بخش نگهداری می‌شوند.</p>
+                </div>
+
+                <div class="search-wrapper archive-search">
+                    <span class="search-prefix" aria-hidden="true">
+                        <svg class="svg-icon-sm"><use href="#icon-search"></use></svg>
+                    </span>
+                    <input 
+                        type="text" 
+                        id="completedSearchInput" 
+                        class="search-field" 
+                        placeholder="جستجو در بایگانی..."
+                    >
+                    <button type="button" id="clearCompletedSearch" class="btn-clear" title="پاک کردن جستجو" style="display: none;">
+                        <svg class="svg-icon-xs"><use href="#icon-close"></use></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- فهرست بایگانی -->
+            <div id="completedIdeasContainer" class="editorial-list archive-list">
+                <!-- سطرهای تکمیل‌شده با JS درج می‌شوند -->
+            </div>
+
+            <!-- وضعیت خالی برای بایگانی -->
+            <div id="completedEmptyState" class="empty-view" style="display: none;">
+                <div class="empty-mark" aria-hidden="true">
+                    <svg class="svg-icon-lg"><use href="#icon-check"></use></svg>
+                </div>
+                <h3 class="empty-headline">هنوز چیزی را تمام نکرده‌ای.</h3>
+                <p class="empty-text">وقتی کاری را تمام کردی، در آرامش اینجا بایگانی می‌شود.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- فوتر با راهنمای ملایم میانبرها -->
+    <footer class="app-footer">
+        <div class="footer-inner">
+            <div class="footer-shortcuts">
+                <span class="shortcut-item"><kbd>Ctrl</kbd> + <kbd>N</kbd> ثبت ایده</span>
+                <span class="shortcut-item"><kbd>Ctrl</kbd> + <kbd>K</kbd> جستجو</span>
+                <span class="shortcut-item"><kbd>Ctrl</kbd> + <kbd>F</kbd> کانون تمرکز</span>
+                <span class="shortcut-item"><kbd>Esc</kbd> بستن پنجره</span>
+            </div>
+            <div class="footer-brand">
+                ثبت سریع • اولویت‌بندی آگاهانه • تمرکز بر یک ایده
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= مودال تمیز و جمع‌وجور ویرایش ایده ================= -->
+    <div id="editModal" class="modal-layer" style="display: none;">
+        <div class="modal-box">
+            <div class="modal-top">
+                <h3 class="modal-heading">ویرایش ایده</h3>
+                <button type="button" class="btn-icon-close" id="closeEditModalBtn" aria-label="بستن پنجره">
+                    <svg class="svg-icon-sm"><use href="#icon-close"></use></svg>
+                </button>
+            </div>
+            <form id="editIdeaForm">
+                <input type="hidden" id="editIdeaId">
+                
+                <div class="input-block">
+                    <label for="editTitleInput" class="input-label">عنوان ایده</label>
+                    <input type="text" id="editTitleInput" class="text-input" maxlength="160" required>
+                </div>
+
+                <div class="input-block">
+                    <label for="editDescInput" class="input-label">یادداشت‌ها و جزئیات</label>
+                    <textarea id="editDescInput" class="textarea-input" rows="3" placeholder="توضیحات اختیاری..."></textarea>
+                </div>
+
+                <div class="input-block">
+                    <label class="input-label">سطح اولویت</label>
+                    <div class="priority-modal-choices">
+                        <label class="priority-choice priority-choice-high">
+                            <input type="radio" name="editPriority" value="high">
+                            <span class="choice-pill"><span class="dot dot-high"></span> زیاد</span>
+                        </label>
+                        <label class="priority-choice priority-choice-medium">
+                            <input type="radio" name="editPriority" value="medium">
+                            <span class="choice-pill"><span class="dot dot-medium"></span> متوسط</span>
+                        </label>
+                        <label class="priority-choice priority-choice-low">
+                            <input type="radio" name="editPriority" value="low">
+                            <span class="choice-pill"><span class="dot dot-low"></span> کم</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" id="cancelEditBtn">انصراف</button>
+                    <button type="submit" class="btn-save" id="saveEditBtn">ذخیره تغییرات</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================= مودال تأیید حذف دائمی ================= -->
+    <div id="deleteModal" class="modal-layer" style="display: none;">
+        <div class="modal-box modal-box-danger">
+            <div class="modal-top">
+                <h3 class="modal-heading">حذف دائمی</h3>
+                <button type="button" class="btn-icon-close" id="closeDeleteModalBtn" aria-label="بستن پنجره">
+                    <svg class="svg-icon-sm"><use href="#icon-close"></use></svg>
+                </button>
+            </div>
+            <div class="modal-content-text">
+                <p>آیا از حذف همیشگی این ایده اطمینان داری؟</p>
+                <div class="target-title-preview" id="deleteIdeaTitle">...</div>
+                <p class="muted-warning">این ایده برای همیشه از دیتابیس پاک خواهد شد و قابل بازگشت نیست.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-cancel" id="cancelDeleteBtn">انصراف</button>
+                <button type="button" class="btn-danger-confirm" id="confirmDeleteBtn">حذف برای همیشه</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= نوار ملایم اعلان (Toast) با Undo ================= -->
+    <div id="toastContainer" class="toast-wrapper">
+        <div id="toast" class="toast-item" style="display: none;" role="status">
+            <div class="toast-content">
+                <span class="toast-indicator" aria-hidden="true">
+                    <svg class="svg-icon-sm"><use href="#icon-check"></use></svg>
+                </span>
+                <span id="toastMessage" class="toast-text">ایده به پایان رسید و بایگانی شد.</span>
+                <button type="button" id="toastUndoBtn" class="toast-btn-undo">برگرداندن (Undo)</button>
+            </div>
+            <!-- نوار خطی تایمر ۵ ثانیه‌ای -->
+            <div class="toast-timer-bar">
+                <div id="toastProgress" class="toast-timer-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- اسکریپت جاوااسکریپت فرانت‌اند -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

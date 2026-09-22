@@ -1,0 +1,56 @@
+# ==============================================================================
+# Git Ignore Configuration for "Ideas & Focus" Project
+# ==============================================================================
+
+# Byte-compiled / Python bytecode cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# PyInstaller build artifacts
+build/
+dist/
+*.manifest
+*.spec.bak
+
+# Inno Setup installer output
+installer/*.exe
+
+# SQLite Databases & WAL journaling files (Keep repo clean, users have their own DB in %APPDATA%)
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Python Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment variables & local secrets
+.env
+.env.local
+
+# IDE and Text Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# Operating System files
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Temporary logs & test artifacts
+*.log
+scratch/
+test_install/

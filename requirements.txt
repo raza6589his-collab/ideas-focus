@@ -1,0 +1,14 @@
+# ==============================================================================
+# Requirements for Ideas & Focus (Web & Desktop Editions)
+# ==============================================================================
+
+# Web Framework & REST API
+Flask>=3.0.0
+Werkzeug>=3.0.0
+
+# Desktop Edition GUI & Icon Processing
+PySide6>=6.6.0
+Pillow>=10.0.0
+
+# Packaging & Build (Development)
+pyinstaller>=6.0.0
