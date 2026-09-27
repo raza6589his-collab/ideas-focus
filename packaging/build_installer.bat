@@ -45,7 +45,7 @@ if %errorlevel% neq 0 (
 echo.
 echo ============================================================
 echo   ✓ فایل نصبی با موفقیت در مسیر زیر ساخته شد:
-echo   installer\IdeasFocus_Setup_v1.0.0.exe
+echo   installer\IdeasFocus_Setup_v1.1.0.exe
 echo ============================================================
 echo.
 pause

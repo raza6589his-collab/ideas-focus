@@ -1426,25 +1426,19 @@ html[dir="ltr"] #focusExitBtn svg {
     margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    text-align: center;
     gap: 16px;
     flex-wrap: wrap;
 }
 
 .footer-shortcuts {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
+    display: none !important;
 }
 
-.shortcut-item kbd {
-    background-color: var(--bg-surface);
-    border: 1px solid var(--border-hairline);
-    padding: 1px 4px;
-    border-radius: 3px;
-    font-family: monospace;
-    font-size: 10px;
-    color: var(--text-secondary);
+.footer-brand {
+    text-align: center;
+    width: 100%;
 }
 
 /* ================= ۱۳. واکنش‌گرایی (Responsive) ================= */

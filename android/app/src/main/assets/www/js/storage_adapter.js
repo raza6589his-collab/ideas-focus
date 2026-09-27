@@ -216,7 +216,7 @@ class OfflineStorageEngine {
 
         // 12. Check update
         if (path === '/api/check-update') {
-            const current = '1.1.0';
+            const current = '1.1.1';
             const repos = [
                 'https://api.github.com/repos/raza6589his-collab/ideas-focus-Apk-/releases/latest',
                 'https://api.github.com/repos/raza6589his-collab/ideas-focus/releases/latest'
